@@ -1,35 +1,25 @@
-export default function json2html(data) {
-    // Start building the HTML string for the table
-    let html = '<table data-user="sskreddykomma@gmail.com">';
-    
-    // Add table headers
-    html += `
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Age</th>
-                <th>Gender</th>
-            </tr>
-        </thead>
-    `;
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON to HTML Table</title>
+</head>
+<body>
+    <div id="table-container"></div>
 
-    // Start the table body
-    html += "<tbody>";
+    <script type="module">
+        import json2html from './json2html.js';
 
-    // Loop through each item in the data array and add a row
-    data.forEach(item => {
-        html += `
-            <tr>
-                <td>${item.Name}</td>
-                <td>${item.Age}</td>
-                <td>${item.Gender || ""}</td>
-            </tr>
-        `;
-    });
+        // Sample data
+        const data = [
+            { Name: "Alice", Age: 25 },
+            { Name: "Bob", Age: 30 },
+            { Name: "Charlie", Age: 35, Gender: "M" }
+        ];
 
-    // Close the table body and table tags
-    html += "</tbody></table>";
-
-    // Return the completed HTML string
-    return html;
-}
+        // Generate HTML table and insert it into the page
+        document.getElementById('table-container').innerHTML = json2html(data);
+    </script>
+</body>
+</html>
